@@ -87,3 +87,38 @@ disable 'flight'
 ```bash
 drop 'flight'
 ```
+
+# Hive
+
+## From the Hive shell, join Hbase table
+
+    > CREATE EXTERNAL TABLE hive_flight(fno int, fsource string, fdestination string, fsingle string, fround string)
+    > STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
+    > WITH SERDEPROPERTIES ("hbase.columns.mapping" = ":key, info:source, info:destination, price:single, price:round")
+    > TBLPROPERTIES("hbase.table.name" = 'flight');
+## Display 
+    > SELECT * FROM hive_flight
+    
+## Sum and Average
+
+Note that fdelay should be an integer 
+      
+    > SELECT sum(fdelay) FROM hive_flight;
+    > SELECT avg(fdelay) FROM hive_flight;
+    
+# Index
+
+    > CREATE INDEX hive_flight_index
+    > ON TABLE hive_flight(fno)
+    > AS 'org.apache.hadoop.hive.ql.index.compact.CompactIndexHandler'
+    > WITH DEFERRED REBUILD
+    > ;
+    
+ To display the index 
+ 
+    > SHOW INDEX ON hive_flight;
+
+
+
+
+
