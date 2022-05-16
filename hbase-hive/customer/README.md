@@ -46,3 +46,12 @@
 ```
 > SELECT customer.cname, order.quantity, item.price FROM customer JOIN order ON (customer.oid = order.oid) JOIN item ON (order.iid = item.iid);
 ```
+
+# Sum and Avg
+
+```
+> SELECT sum(item.price*order.quantity), avg(item.price*order.quantity) FROM customer JOIN order ON (customer.oid = order.oid) JOIN item ON (order.iid = item.cid);
+```
+
+
+
