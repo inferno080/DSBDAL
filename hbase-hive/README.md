@@ -67,10 +67,6 @@ From multiple columns and single row :
 ```bash
 get 'flight', '1' , COLUMN=>['info:source', 'info:destination']
 ```
-From all rows and particular column :
-```bash
-scan 'flight' , COLUMNS=>'info:source'
-```
 
 ## Delete Column Family
 ```bash
