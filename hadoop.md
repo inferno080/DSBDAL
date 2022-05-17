@@ -14,7 +14,7 @@ Right click on `<project-name>/src` and `Create New Class`, name it `<my-class>`
 
 use following template for code:
 
-```
+```java
 import java.io.IOException;
 
 import org.apache.hadoop.conf.Configuration;
